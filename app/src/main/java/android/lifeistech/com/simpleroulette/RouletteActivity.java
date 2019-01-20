@@ -20,6 +20,7 @@ import com.github.mikephil.charting.utils.ColorTemplate;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 public class RouletteActivity extends AppCompatActivity {
     Button startButton, stopButton;
@@ -30,7 +31,6 @@ public class RouletteActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_roulette);
-        stopButton = (Button) findViewById(R.id.stopButton);
         startButton = (Button) findViewById(R.id.startButton);
 
         Intent intent = getIntent();
@@ -40,17 +40,10 @@ public class RouletteActivity extends AppCompatActivity {
     }
 
     public void start(View v) {
-        mPieChart.spin(5000, mPieChart.getRotationAngle(), mPieChart.getRotationAngle() + 18000, Easing.EasingOption.EaseOutQuart);
-        startButton.setVisibility(View.GONE);
-        stopButton.setVisibility(View.VISIBLE);
+        Random random=new Random();
+        int number=random.nextInt(3000)+5000;
+        mPieChart.spin(number, mPieChart.getRotationAngle(), mPieChart.getRotationAngle() + 18000, Easing.EasingOption.EaseOutQuart);
     }
-
-    public void stop(View v) {
-        mPieChart.spin(5000, mPieChart.getRotationAngle(), mPieChart.getRotationAngle() + 1800, Easing.EasingOption.EaseOutQuart);
-        stopButton.setVisibility(View.GONE);
-        startButton.setVisibility(View.VISIBLE);
-    }
-
 
     private void setupPieChartView() {
         mPieChart.setUsePercentValues(true);
