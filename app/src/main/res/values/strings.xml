@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">Simple Roulette</string>
+    <string-array name="list">
+        <item></item>
+        <item></item>
+        <item></item>
+    </string-array>
 </resources>
