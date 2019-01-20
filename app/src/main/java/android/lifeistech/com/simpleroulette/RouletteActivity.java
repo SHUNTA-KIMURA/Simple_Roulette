@@ -25,7 +25,6 @@ public class RouletteActivity extends AppCompatActivity {
     Button startButton, stopButton;
     int maxCount;
     PieChart mPieChart;
-    int count = 12;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,7 +40,7 @@ public class RouletteActivity extends AppCompatActivity {
     }
 
     public void start(View v) {
-        mPieChart.spin(30000, mPieChart.getRotationAngle(), mPieChart.getRotationAngle() + 18000, Easing.EasingOption.EaseOutQuart);
+        mPieChart.spin(5000, mPieChart.getRotationAngle(), mPieChart.getRotationAngle() + 18000, Easing.EasingOption.EaseOutQuart);
         startButton.setVisibility(View.GONE);
         stopButton.setVisibility(View.VISIBLE);
     }
@@ -53,9 +52,6 @@ public class RouletteActivity extends AppCompatActivity {
     }
 
 
-
-
-
     private void setupPieChartView() {
         mPieChart.setUsePercentValues(true);
 
@@ -63,12 +59,12 @@ public class RouletteActivity extends AppCompatActivity {
         legend.setPosition(Legend.LegendPosition.BELOW_CHART_LEFT);
 
         List<Float> values = new ArrayList<>();
-        for (int i = 0; i < count; i++) {
+        for (int i = 0; i < maxCount; i++) {
             values.add(100f);
         }
 
         List<Entry> entries = new ArrayList<>();
-        for (int i = 0; i < count; i++) {
+        for (int i = 0; i < maxCount; i++) {
             entries.add(new Entry(values.get(i), i));
         }
 
@@ -77,7 +73,7 @@ public class RouletteActivity extends AppCompatActivity {
         dataSet.setDrawValues(false);
 
         List<String> labels = new ArrayList<>();
-        for (int i = 0; i < count; i++) {
+        for (int i = 0; i < maxCount; i++) {
             labels.add(i + 1 + "");
         }
 

@@ -8,9 +8,9 @@
     tools:context=".MainActivity">
 
     <TextView
-        android:id="@+id/Simple_Roulette"
+        android:id="@+id/textView1"
         android:layout_width="300dp"
-        android:layout_height="50dp"
+        android:layout_height="77dp"
         android:layout_marginBottom="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginLeft="8dp"
@@ -19,7 +19,7 @@
         android:layout_marginTop="8dp"
         android:gravity="center"
         android:text="Simple Roulette"
-        android:textColor="#ff0000"
+        android:textColor="@android:color/holo_red_dark"
         android:textSize="40sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
