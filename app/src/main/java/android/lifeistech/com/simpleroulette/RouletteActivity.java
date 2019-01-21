@@ -42,7 +42,7 @@ public class RouletteActivity extends AppCompatActivity {
     public void start(View v) {
         Random random=new Random();
         int number=random.nextInt(3000)+5000;
-        mPieChart.spin(number, mPieChart.getRotationAngle(), mPieChart.getRotationAngle() + 18000, Easing.EasingOption.EaseOutQuart);
+        mPieChart.spin(number, mPieChart.getRotationAngle(), mPieChart.getRotationAngle()+number+5000, Easing.EasingOption.EaseOutQuart);
     }
 
     private void setupPieChartView() {
