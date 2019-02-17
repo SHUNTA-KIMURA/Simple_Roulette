@@ -12,6 +12,7 @@ import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
+import android.widget.Toast;
 
 import com.github.mikephil.charting.animation.Easing;
 import com.github.mikephil.charting.charts.PieChart;
@@ -30,9 +31,7 @@ public class RouletteActivity extends AppCompatActivity {
     Button startButton, stopButton;
     int maxCount;
     PieChart mPieChart;
-    Random random = new Random();
-    int number = random.nextInt(3000) + 5000;
-    int number2=number+5000;
+    int result;
 
 
     @Override
@@ -47,16 +46,19 @@ public class RouletteActivity extends AppCompatActivity {
     }
 
     public void start(View v) {
-        mPieChart.spin(number, mPieChart.getRotationAngle(), mPieChart.getRotationAngle() + number + 5000, Easing.EasingOption.EaseOutQuart);
+        Random random = new Random();
+        int number = random.nextInt(3000) + 5000;
+        int bunshi = ((maxCount * (number + 5000)) / 360);
+        result = maxCount - (bunshi % maxCount);
+        mPieChart.spin(number, mPieChart.getRotationAngle(), mPieChart.getRotationAngle() + (float) (number + 5000), Easing.EasingOption.EaseOutQuart);
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                Log.d("run", "runしたよ");
                 runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-                        new AlertDialog.Builder(getApplicationContext())
-                                .setMessage("message")
+                        new AlertDialog.Builder(RouletteActivity.this)
+                                .setMessage(result + "")
                                 .setPositiveButton("OK", null)
                                 .show();
                     }
