@@ -13,6 +13,7 @@ import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.github.mikephil.charting.animation.Easing;
@@ -23,6 +24,8 @@ import com.github.mikephil.charting.data.PieData;
 import com.github.mikephil.charting.data.PieDataSet;
 import com.github.mikephil.charting.formatter.PercentFormatter;
 import com.github.mikephil.charting.utils.ColorTemplate;
+
+import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -35,6 +38,8 @@ public class RouletteActivity extends AppCompatActivity {
     int result;
     PieDataSet dataSet;
     PieData pieData;
+    String resultText;
+    TextView textView;
 
 
     @Override
@@ -42,6 +47,7 @@ public class RouletteActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_roulette);
         startButton = (Button) findViewById(R.id.startButton);
+        textView=(TextView)findViewById(R.id.past);
         Intent intent = getIntent();
         maxCount = intent.getIntExtra("number", maxCount);
         mPieChart = (PieChart) findViewById(R.id.pie_chart);
@@ -69,6 +75,10 @@ public class RouletteActivity extends AppCompatActivity {
 //                                        pieData.notifyDataChanged();
 //                                        mPieChart.notifyDataSetChanged();
 //                                        mPieChart.invalidate();
+                                        resultText=result+",";
+                                        textView.setText(resultText);
+
+
                                     }
                                 })
                                 .show();
@@ -85,6 +95,7 @@ public class RouletteActivity extends AppCompatActivity {
         mPieChart.setTouchEnabled(false);
         Legend legend = mPieChart.getLegend();
         legend.setPosition(Legend.LegendPosition.BELOW_CHART_LEFT);
+        legend.setEnabled(false);
 
         List<Float> values = new ArrayList<>();
         for (int i = 0; i < maxCount; i++) {
