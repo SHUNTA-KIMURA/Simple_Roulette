@@ -7,21 +7,43 @@
     android:background="@android:color/white"
     tools:context=".RouletteActivity">
 
-    <com.github.mikephil.charting.charts.PieChart
-        android:id="@+id/pie_chart"
+    <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="432dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:background="@android:color/white"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.244">
+        android:layout_height="match_parent">
 
-    </com.github.mikephil.charting.charts.PieChart>
+        <com.github.mikephil.charting.charts.PieChart
+            android:id="@+id/pie_chart"
+            android:layout_width="match_parent"
+            android:layout_height="432dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="80dp"
+            android:background="@android:color/white"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.296">
+
+        </com.github.mikephil.charting.charts.PieChart>
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="46dp"
+            android:layout_height="82dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0"
+            app:srcCompat="@drawable/institute_roulette" />
+
+    </FrameLayout>
 
 
     <LinearLayout
@@ -101,7 +123,7 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.75">
+        app:layout_constraintVertical_bias="0.784">
 
     </android.support.constraint.ConstraintLayout>
 

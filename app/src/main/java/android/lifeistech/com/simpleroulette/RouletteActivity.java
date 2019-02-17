@@ -1,5 +1,6 @@
 package android.lifeistech.com.simpleroulette;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Handler;
@@ -59,7 +60,12 @@ public class RouletteActivity extends AppCompatActivity {
                     public void run() {
                         new AlertDialog.Builder(RouletteActivity.this)
                                 .setMessage(result + "")
-                                .setPositiveButton("OK", null)
+                                .setPositiveButton("CONTINUE", new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialog, int which) {
+
+                                    }
+                                })
                                 .show();
                     }
                 });
@@ -67,10 +73,12 @@ public class RouletteActivity extends AppCompatActivity {
         }, number);
 
 
+
     }
 
     private void setupPieChartView() {
         mPieChart.setUsePercentValues(true);
+        mPieChart.setTouchEnabled(false);
         Legend legend = mPieChart.getLegend();
         legend.setPosition(Legend.LegendPosition.BELOW_CHART_LEFT);
 
@@ -87,6 +95,7 @@ public class RouletteActivity extends AppCompatActivity {
         PieDataSet dataSet = new PieDataSet(entries, "");
         dataSet.setColors(ColorTemplate.COLORFUL_COLORS);
         dataSet.setDrawValues(false);
+        dataSet.setSliceSpace(3f);
 
 
         List<String> labels = new ArrayList<>();
