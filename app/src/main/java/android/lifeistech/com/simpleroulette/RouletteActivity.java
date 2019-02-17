@@ -33,6 +33,8 @@ public class RouletteActivity extends AppCompatActivity {
     int maxCount;
     PieChart mPieChart;
     int result;
+    PieDataSet dataSet;
+    PieData pieData;
 
 
     @Override
@@ -63,7 +65,10 @@ public class RouletteActivity extends AppCompatActivity {
                                 .setPositiveButton("CONTINUE", new DialogInterface.OnClickListener() {
                                     @Override
                                     public void onClick(DialogInterface dialog, int which) {
-
+//                                        dataSet.removeEntry(result);
+//                                        pieData.notifyDataChanged();
+//                                        mPieChart.notifyDataSetChanged();
+//                                        mPieChart.invalidate();
                                     }
                                 })
                                 .show();
@@ -71,7 +76,6 @@ public class RouletteActivity extends AppCompatActivity {
                 });
             }
         }, number);
-
 
 
     }
@@ -92,7 +96,7 @@ public class RouletteActivity extends AppCompatActivity {
             entries.add(new Entry(values.get(i), i));
         }
 
-        PieDataSet dataSet = new PieDataSet(entries, "");
+        dataSet = new PieDataSet(entries, "");
         dataSet.setColors(ColorTemplate.COLORFUL_COLORS);
         dataSet.setDrawValues(false);
         dataSet.setSliceSpace(3f);
@@ -103,7 +107,7 @@ public class RouletteActivity extends AppCompatActivity {
             labels.add(i + 1 + "");
         }
 
-        PieData pieData = new PieData(labels, dataSet);
+        pieData = new PieData(labels, dataSet);
         pieData.setValueFormatter(new PercentFormatter());
         pieData.setValueTextSize(20f);
         pieData.setValueTextColor(Color.BLACK);
