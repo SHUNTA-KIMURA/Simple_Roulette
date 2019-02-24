@@ -39,7 +39,10 @@ public class RouletteActivity extends AppCompatActivity {
     PieDataSet dataSet;
     PieData pieData;
     String resultText;
-    TextView textView;
+    int i=0;
+    String[] to = new String[i];
+    TextView past;
+    String kekka;
 
 
     @Override
@@ -47,7 +50,7 @@ public class RouletteActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_roulette);
         startButton = (Button) findViewById(R.id.startButton);
-        textView=(TextView)findViewById(R.id.past);
+        past = (TextView) findViewById(R.id.past);
         Intent intent = getIntent();
         maxCount = intent.getIntExtra("number", maxCount);
         mPieChart = (PieChart) findViewById(R.id.pie_chart);
@@ -71,13 +74,21 @@ public class RouletteActivity extends AppCompatActivity {
                                 .setPositiveButton("CONTINUE", new DialogInterface.OnClickListener() {
                                     @Override
                                     public void onClick(DialogInterface dialog, int which) {
-//                                        dataSet.removeEntry(result);
-//                                        pieData.notifyDataChanged();
-//                                        mPieChart.notifyDataSetChanged();
-//                                        mPieChart.invalidate();
-                                        resultText=result+",";
-                                        textView.setText(resultText);
+                                        resultText = "," + (result+"");
+                                        for (int modoki = maxCount; modoki >= 2; modoki--) {
+                                            i += 1;
+                                            if (modoki == (maxCount - 1)) {
+                                                to[i] = result + "";
+                                            } else {
+                                                to[i] = resultText;
+                                            }
+                                            for (String s : to) {
+                                                kekka += s;
+                                            }
+                                            past.setText(kekka);
+                                            Log.d("kekka","hyoujisimasita" );
 
+                                        }
 
                                     }
                                 })
