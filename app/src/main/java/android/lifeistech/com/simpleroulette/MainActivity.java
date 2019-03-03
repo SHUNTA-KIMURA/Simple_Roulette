@@ -25,6 +25,7 @@ public class MainActivity extends AppCompatActivity {
         int maxCount=Integer.parseInt(text);
         Intent intent = new Intent(getApplication(), RouletteActivity.class);
         intent.putExtra("number",maxCount);
+        intent.putExtra("past","");
         startActivity(intent);
     }
 }

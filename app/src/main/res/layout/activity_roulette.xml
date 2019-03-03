@@ -113,10 +113,11 @@
     <TextView
         android:id="@+id/past"
         android:layout_width="350dp"
-        android:layout_height="34dp"
+        android:layout_height="31dp"
         android:layout_gravity="center_horizontal"
         android:layout_marginStart="8dp"
         android:layout_marginTop="500dp"
+        android:gravity="center"
         android:text="Let's start!"
         android:textColor="@android:color/holo_purple"
         android:textSize="25sp"

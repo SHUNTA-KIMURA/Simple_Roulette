@@ -4,17 +4,13 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Handler;
-import android.os.Looper;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.github.mikephil.charting.animation.Easing;
 import com.github.mikephil.charting.charts.PieChart;
@@ -24,8 +20,6 @@ import com.github.mikephil.charting.data.PieData;
 import com.github.mikephil.charting.data.PieDataSet;
 import com.github.mikephil.charting.formatter.PercentFormatter;
 import com.github.mikephil.charting.utils.ColorTemplate;
-
-import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -38,9 +32,9 @@ public class RouletteActivity extends AppCompatActivity {
     int result;
     PieDataSet dataSet;
     PieData pieData;
-    String resultText;
-    int i=0;
-    String[] to = new String[i];
+    String resultText = "";
+    int count = 0;
+    String[] resultList;
     TextView past;
     String kekka;
 
@@ -53,6 +47,9 @@ public class RouletteActivity extends AppCompatActivity {
         past = (TextView) findViewById(R.id.past);
         Intent intent = getIntent();
         maxCount = intent.getIntExtra("number", maxCount);
+        resultText = intent.getStringExtra("past");
+        past.setText(resultText);
+        resultList = new String[maxCount];
         mPieChart = (PieChart) findViewById(R.id.pie_chart);
         setupPieChartView();
     }
@@ -74,21 +71,13 @@ public class RouletteActivity extends AppCompatActivity {
                                 .setPositiveButton("CONTINUE", new DialogInterface.OnClickListener() {
                                     @Override
                                     public void onClick(DialogInterface dialog, int which) {
-                                        resultText = "," + (result+"");
-                                        for (int modoki = maxCount; modoki >= 2; modoki--) {
-                                            i += 1;
-                                            if (modoki == (maxCount - 1)) {
-                                                to[i] = result + "";
-                                            } else {
-                                                to[i] = resultText;
-                                            }
-                                            for (String s : to) {
-                                                kekka += s;
-                                            }
-                                            past.setText(kekka);
-                                            Log.d("kekka","hyoujisimasita" );
-
-                                        }
+                                        resultText = resultText + (result + " , ");
+                                        past.setText(resultText);
+                                        Intent intent = new Intent(getApplication(), RouletteActivity.class);
+                                        intent.putExtra("number", maxCount);
+                                        intent.putExtra("past", resultText);
+                                        startActivity(intent);
+                                        finish();
 
                                     }
                                 })
